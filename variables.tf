@@ -1,23 +1,35 @@
-variable "instance_name" {
-  description = "Value of the EC2 instance's Name tag."
+variable "aws_region" {
+  description = "AWS region to deploy resources into."
   type        = string
-  default     = "learn-hcp-terraform-run-triggers"
+  default     = "us-west-2"
+}
+
+variable "availability_zone" {
+  description = "Availability zone for the subnet."
+  type        = string
+  default     = "us-west-2a"
+}
+
+variable "instance_name" {
+  description = "Value of the EC2 instance Name tag."
+  type        = string
+  default     = "learn-hcp-terraform-policy"
 }
 
 variable "instance_type" {
-  description = "The EC2 instance's type."
+  description = "EC2 instance type."
   type        = string
   default     = "t2.micro"
 }
 
-variable "workspace_name" {
-  description = "Name of the source workspace to query."
+variable "vpc_cidr_block" {
+  description = "CIDR block for the VPC."
   type        = string
-  default     = "edu-hashicorp-tfe"
+  default     = "10.0.0.0/16"
 }
 
-variable "organization_name" {
-  description = "Name of the HCP Terraform organization with the source workspace"
+variable "subnet_cidr_block" {
+  description = "CIDR block for the subnet."
   type        = string
-  default = "xhavel17orgtfe"
+  default     = "10.0.1.0/24"
 }
