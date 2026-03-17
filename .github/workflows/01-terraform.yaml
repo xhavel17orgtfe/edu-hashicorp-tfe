@@ -12,7 +12,7 @@ permissions:
 
 env:
 #  TF_IN_AUTOMATION: true
-  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+  TF_TOKEN_app_terraform_io: ${{ secrets.TFE_TOKEN }}
 
 jobs:
   plan:
