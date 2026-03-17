@@ -17,8 +17,7 @@ env:
 jobs:
   plan:
     name: terraform plan
-    runs-on: 
-      group: default
+    runs-on: ubutnu-latest
 
     steps:
       - name: Checkout
@@ -43,8 +42,7 @@ jobs:
 
   apply:
     name: terraform apply
-    runs-on: 
-      group: default
+    runs-on: ubutnu-latest
     needs: plan
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
