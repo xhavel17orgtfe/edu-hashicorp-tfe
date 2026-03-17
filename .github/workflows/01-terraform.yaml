@@ -1,4 +1,4 @@
-name: Terraform
+name: Deploy test HashiCorp Terraform Enterprise and sentinel
 
 on:
   workflow_dispatch:
@@ -19,15 +19,17 @@ jobs:
     name: terraform plan
     runs-on:
       group: default
+    container:
+      image: cr.rak.farnostrakvice.cz:50443/my/my-gcp-terraform:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_wrapper: false
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v3
+      #   with:
+      #     terraform_wrapper: false
 
       - name: Terraform Init
         run: terraform init
@@ -45,6 +47,8 @@ jobs:
     name: terraform apply
     runs-on:
       group: default
+    container:
+      image: cr.rak.farnostrakvice.cz:50443/my/my-gcp-terraform:latest
     needs: plan
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
@@ -54,10 +58,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_wrapper: false
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v3
+      #   with:
+      #     terraform_wrapper: false
 
       - name: Terraform Init
         run: terraform init
