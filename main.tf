@@ -2,6 +2,10 @@ provider "aws" {
   region = "us-west-2"
 }
 
+provider "tfe" {
+  hostname = "app.terraform.io"
+} 
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
